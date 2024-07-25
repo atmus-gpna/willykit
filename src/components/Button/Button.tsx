@@ -1,5 +1,6 @@
 import React, { MouseEventHandler } from "react";
 import styled from "styled-components";
+import { mainColors } from "../../utils/constants/colors";
 
 export type ButtonProps = {
   text?: string;
@@ -18,8 +19,9 @@ const StyledButton = styled.button<ButtonProps>`
   font-weight: bold;
   border-radius: 10px;
   display: inline-block;
-  color: ${(props) => (props.primary ? "#fff" : "#000")};
-  background-color: ${(props) => (props.primary ? "#55b0ff" : "#c4e9f4")};
+  color: ${(props) => (props.primary ? mainColors.white : mainColors.black)};
+  background-color: ${(props) =>
+    props.primary ? mainColors.skyBlue : mainColors.lightBlue};
   padding: ${(props) =>
     props.size === "small"
       ? "7px 25px 8px"

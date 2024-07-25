@@ -19,6 +19,7 @@ export default defineConfig({
   },
   plugins: [dts()], // Uses the 'vite-plugin-dts' plugin for generating TypeScript declaration files (d.ts).
   test: {
+    exclude: ["**/__docs__/**", "**/__test__/**"],
     globals: true,
     environment: "jsdom",
     setupFiles: "./setupTests.ts",
