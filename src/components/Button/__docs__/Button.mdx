@@ -1,0 +1,40 @@
+import { Canvas, Meta } from "@storybook/blocks";
+import Example from "./Example.tsx";
+import * as Button from "./Button.stories.tsx";
+
+<Meta of={Button} title="Button" />
+
+# Button
+
+Компонент кнопки
+
+#### Пример
+
+<Canvas of={Button.Primary} />
+
+### Применение
+
+```ts
+import {Button} from "willykit";
+
+const Example = () => {
+  return (
+      <Button
+        size={"small"}
+        text={"Button"}
+        onClick={()=> console.log("Clicked")}
+        primary
+      />
+  );
+};
+
+export default Example;
+```
+
+#### Аргументы
+
+ - **text** _`() => void`_ - Строка, представляющая текстовое содержание кнопки.
+ - **primary** - Булево значение, указывающее, должна ли кнопка иметь основной стиль или нет. Как правило, основная кнопка выделяется как главное действие в пользовательском интерфейсе.
+ - **disabled** - Булево значение, указывающее, должна ли кнопка быть отключена или нет. Когда кнопка отключена, её нельзя нажать или взаимодействовать с ней.
+ - **size** - Строка с одним из трёх возможных значений: "small" (маленький), "medium" (средний) или "large" (большой). Определяет размер или габариты кнопки.
+ - **onClick** - Функция, которая вызывается при нажатии на кнопку. Она принимает MouseEventHandler для обработки события клика на элементе кнопки.
