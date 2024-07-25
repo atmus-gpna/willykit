@@ -1,0 +1,9 @@
+node_modules
+dist
+/.idea/
+
+#storybook build directory
+storybook-static
+
+*storybook.log
+
