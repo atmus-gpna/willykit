@@ -13,7 +13,7 @@
     "build": "tsc && vite build",
     "format": "prettier --write --parser typescript '**/*.{ts,tsx}'",
     "lint": "eslint . --ext .ts,.tsx --ignore-path .gitignore --fix",
-    "test": "vitest run",
+    "test": "vitest run --passWithNoTests",
     "test-watch": "vitest",
     "test:ui": "vitest --ui",
     "storybook": "storybook dev -p 6006",
