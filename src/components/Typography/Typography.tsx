@@ -1,14 +1,14 @@
-import { FC } from "react";
+import React from "react";
 import { TypographyProps } from "./typography.types";
 import StyledTypography from "./styled";
 
-const Typography: FC<TypographyProps> = ({
+const Typography: React.FC<TypographyProps> = ({
   format = "p",
   children,
   ...props
 }) => {
   return (
-    <StyledTypography format={format} {...props}>
+    <StyledTypography format={format} {...props} role="typography">
       {children}
     </StyledTypography>
   );

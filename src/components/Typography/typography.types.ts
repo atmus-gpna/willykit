@@ -7,6 +7,7 @@ export type TypographyProps = {
   margin?: number;
   padding?: number;
   color?: string;
+  role?: string;
 };
 
 // Определяем типы заголовков
