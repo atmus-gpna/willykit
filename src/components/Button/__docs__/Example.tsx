@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import Button from "../Button";
-import { ButtonProps, Icons } from "../button.types";
+import { ButtonProps } from "../button.types";
+import { EIcons } from "../../Icon/icon.types";
 
 const Example: FC<ButtonProps> = ({
   disabled = false,
@@ -9,7 +10,7 @@ const Example: FC<ButtonProps> = ({
   size = "small",
   text = "Button",
   icon = {
-    iconName: Icons.pluse,
+    iconName: EIcons.pluse,
     position: "left",
     color: "red",
   },
