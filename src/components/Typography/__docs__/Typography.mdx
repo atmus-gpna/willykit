@@ -1,0 +1,37 @@
+import { Canvas, Meta } from "@storybook/blocks";
+import Example from "./ExampleTypography.tsx";
+import * as Typography from "./Typography.stories.tsx";
+
+<Meta of={Typography} title="Typography" />
+
+# Typography
+
+Компонент параграфа
+
+#### Пример
+
+<Canvas of={Typography.Primary} />
+
+### Применение
+
+```ts
+import {Typography} from "willykit";
+
+const Example = () => {
+  return (
+      <Typography>Lorem ipsum</Typography>
+  );
+};
+
+export default Example;
+```
+
+#### Аргументы
+
+- **children** - Строка, представляющая текстовое содержание.
+- **lineHeight** -Number. Высота строки.
+- **fontWeight** - Строка либо номер.
+- **fontSize** - строка либо номер
+- **margin** - Number
+- **padding** - Number
+- **format** - h1, h2, etc... p
