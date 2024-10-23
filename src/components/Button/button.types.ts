@@ -1,4 +1,5 @@
 import { MouseEventHandler } from "react";
+import { EIcons } from "../Icon/icon.types";
 
 export type ButtonProps = {
   text?: string;
@@ -6,9 +7,9 @@ export type ButtonProps = {
   disabled?: boolean;
   size?: "small" | "medium" | "large";
   onClick?: MouseEventHandler<HTMLButtonElement>;
-  icon?: { position: "left" | "right"; iconName: Icons; color?: string } | null;
+  icon?: {
+    position: "left" | "right";
+    iconName: keyof typeof EIcons;
+    color?: string;
+  } | null;
 };
-
-export const enum Icons {
-  "pluse" = "pluse",
-}

@@ -1,11 +1,7 @@
 import { useDynamicSvgImport } from "../../hooks/useDynamicSvgImport";
+import { IIconProps } from "./icon.types";
 
-interface IconProps {
-  name: string;
-  color?: string;
-  position?: "left" | "right" | "center";
-}
-const Icon: React.FC<IconProps> = (props) => {
+const Icon: React.FC<IIconProps> = (props) => {
   const { name, color, position } = props;
   const { SvgIcon: RawSvgIcon } = useDynamicSvgImport(name);
 
