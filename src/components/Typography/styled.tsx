@@ -1,8 +1,8 @@
 import { ComponentType } from "react";
 import styled from "styled-components";
-import { ETypography, TTypography, TypographyProps } from "./typography.types";
+import { ETypography, TTypography, TTypographyProps } from "./typography.types";
 const typographyComponents: {
-  [key in ETypography]: ComponentType<TypographyProps>;
+  [key in ETypography]: ComponentType<TTypographyProps>;
 } = {
   h1: styled.h1``,
   h2: styled.h2``,
@@ -15,11 +15,11 @@ const typographyComponents: {
 
 // Компонент для стилизованного элемента
 const StyledTypography = styled(
-  ({ format = "p", ...props }: { format?: TTypography } & TypographyProps) => {
+  ({ format = "p", ...props }: { format?: TTypography } & TTypographyProps) => {
     const Tag = typographyComponents[format];
     return <Tag {...props} />;
   },
-)<TypographyProps>`
+)<TTypographyProps>`
   line-height: ${(props) => props.lineHeight ?? 1};
   margin: ${(props) => props.margin ?? 0}px;
   padding: ${(props) => props.padding ?? 0}px;

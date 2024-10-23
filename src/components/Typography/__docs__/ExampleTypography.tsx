@@ -1,8 +1,8 @@
 import React from "react";
 import Typography from "../Typography";
-import { TypographyProps } from "../typography.types";
+import { TTypographyProps } from "../typography.types";
 
-const ExampleTypography: React.FC<TypographyProps> = ({ ...props }) => {
+const ExampleTypography: React.FC<TTypographyProps> = ({ ...props }) => {
   return (
     <div
       style={{
@@ -12,9 +12,7 @@ const ExampleTypography: React.FC<TypographyProps> = ({ ...props }) => {
         height: "100%",
       }}
     >
-      <Typography format={props.format} {...props}>
-        Текст
-      </Typography>
+      <Typography format={props.format} {...props} children={props.children} />
     </div>
   );
 };

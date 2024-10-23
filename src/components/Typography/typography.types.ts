@@ -1,4 +1,4 @@
-export type TypographyProps = {
+export type TTypographyProps = {
   format?: TTypography;
   children: string;
   lineHeight?: string | number;
@@ -7,13 +7,12 @@ export type TypographyProps = {
   margin?: number;
   padding?: number;
   color?: string;
-  role?: string;
 };
 
 // Определяем типы заголовков
 export type TTypography = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p";
 
-export enum ETypography {
+export const enum ETypography {
   h1 = "h1",
   h2 = "h2",
   h3 = "h3",

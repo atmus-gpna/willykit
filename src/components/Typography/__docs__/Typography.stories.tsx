@@ -17,6 +17,7 @@ export const Primary: Story = {
     margin: 10,
     padding: 2,
     format: "p",
+    children: "Primary text",
   },
 };
 
@@ -28,5 +29,6 @@ export const Secondary: Story = {
     margin: 10,
     padding: 2,
     format: "h1",
+    children: "Secondary Text",
   },
 };
