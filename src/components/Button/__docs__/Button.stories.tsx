@@ -9,14 +9,14 @@ const meta: Meta<typeof Example> = {
 export default meta;
 type Story = StoryObj<typeof Example>;
 
-export const Primary: Story = {
+export const Modal: Story = {
   args: {
     text: "Primary Button",
     primary: true,
     disabled: false,
     size: "small",
     onClick: () => console.log("Button"),
-    icon: { position: "left", iconName: EIcons.pluse, color: "red" },
+    icon: { position: "right", iconName: EIcons.qrcode, color: "red" },
   },
 };
 export const Secondary: Story = {

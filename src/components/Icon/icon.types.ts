@@ -31,5 +31,4 @@ export const enum EIcons {
 export interface IIconProps {
   name: string;
   color?: string;
-  position?: "left" | "right" | "center";
 }
