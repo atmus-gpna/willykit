@@ -15,7 +15,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "declaration": true
+    "declaration": true,
+    "types": ["vite-plugin-svgr/client"]
   },
   "include": ["src"],
   "exclude": ["src/**/__docs__", "src/**/__test__"]
