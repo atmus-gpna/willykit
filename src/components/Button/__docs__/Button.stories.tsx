@@ -1,22 +1,26 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Example from "./Example";
+import ExampleButton from "./ExampleButton";
 import { EIcons } from "../../Icon/icon.types";
-const meta: Meta<typeof Example> = {
+import { Icon } from "../../Icon";
+import React from "react";
+const meta: Meta<typeof ExampleButton> = {
   title: "Button",
-  component: Example,
+  component: ExampleButton,
 };
 
 export default meta;
-type Story = StoryObj<typeof Example>;
+type Story = StoryObj<typeof ExampleButton>;
 
-export const Modal: Story = {
+export const Primary: Story = {
   args: {
     text: "Primary Button",
     primary: true,
     disabled: false,
     size: "small",
-    onClick: () => console.log("Button"),
-    icon: { position: "right", iconName: EIcons.qrcode, color: "red" },
+    onClick: () => console.log("Button clicked"),
+    iconLeft: (
+      <Icon name={EIcons.pluse} color="red" size="14" />
+    ) as unknown as typeof Icon,
   },
 };
 export const Secondary: Story = {
@@ -25,7 +29,19 @@ export const Secondary: Story = {
     primary: false,
     disabled: false,
     size: "small",
-    onClick: () => console.log("Button"),
-    icon: undefined,
+    onClick: () => console.log("Button clicked"),
+    iconRight: (
+      <Icon name={EIcons.pluse} color="green" size="14" />
+    ) as unknown as typeof Icon,
+  },
+};
+
+export const TextButton: Story = {
+  args: {
+    text: "just text",
+    primary: false,
+    disabled: false,
+    size: "small",
+    onClick: () => console.log("Button clicked"),
   },
 };

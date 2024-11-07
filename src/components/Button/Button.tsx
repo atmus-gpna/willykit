@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { ButtonProps } from "./button.types";
 import { StyledButton } from "./styled";
-import { Icon } from "../Icon";
 
 const Button: FC<ButtonProps> = ({
   size,
@@ -9,7 +8,8 @@ const Button: FC<ButtonProps> = ({
   disabled,
   text,
   onClick,
-  icon = undefined,
+  iconRight,
+  iconLeft,
   ...props
 }) => {
   return (
@@ -21,19 +21,15 @@ const Button: FC<ButtonProps> = ({
       size={size}
       {...props}
     >
-      {icon ? (
+      {iconLeft ? (
         <div style={{ display: "flex", gap: "20px" }}>
-          {icon?.position === "left" ? (
-            <>
-              <Icon name={icon?.iconName} color={icon?.color} />
-              <p style={{ margin: 0, padding: 0 }}>{text}</p>
-            </>
-          ) : (
-            <>
-              <p style={{ margin: 0, padding: 0 }}>{text}</p>
-              <Icon name={icon?.iconName} color={icon?.color} />
-            </>
-          )}
+          <>{iconLeft}</>
+          <p style={{ margin: 0, padding: 0 }}>{text}</p>
+        </div>
+      ) : iconRight ? (
+        <div style={{ display: "flex", gap: "20px" }}>
+          <p style={{ margin: 0, padding: 0 }}>{text}</p>
+          <>{iconRight}</>
         </div>
       ) : (
         <p style={{ margin: 0, padding: 0 }}>{text}</p>

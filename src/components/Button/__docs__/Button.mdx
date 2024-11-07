@@ -1,5 +1,5 @@
 import { Canvas, Meta } from "@storybook/blocks";
-import Example from "./Example.tsx";
+import ExampleButton from "./ExampleButton.tsx";
 import * as Button from "./Button.stories.tsx";
 
 <Meta of={Button} title="Button" />
@@ -17,19 +17,19 @@ import * as Button from "./Button.stories.tsx";
 ```ts
 import {Button} from "willykit";
 
-const Example = () => {
+const DocsButton = () => {
   return (
       <Button
         size={"small"}
         text={"Button"}
         onClick={()=> console.log("Clicked")}
-        icon={iconName="pluse", color="black", position="left"}
+        iconLeft={<Icon name='pluse', size='24px'>}
         primary
       />
   );
 };
 
-export default Example;
+export default DocsButton;
 ```
 
 #### Аргументы
@@ -39,4 +39,5 @@ export default Example;
 - **disabled** - Булево значение, указывающее, должна ли кнопка быть отключена или нет. Когда кнопка отключена, её нельзя нажать или взаимодействовать с ней.
 - **size** - Строка с одним из трёх возможных значений: "small" (маленький), "medium" (средний) или "large" (большой). Определяет размер или габариты кнопки.
 - **onClick** - Функция, которая вызывается при нажатии на кнопку. Она принимает MouseEventHandler для обработки события клика на элементе кнопки.
-- **icon** - Объект с обязательными полями названия иконки, цвета и позиции(лево или право)
+- **iconLeft** - элемент для вставки изображения элемента Icon слева от текста. Необязателен
+- **iconRight** - элемент для вставки изображения элемента Icon справа от текста. Необязателен
