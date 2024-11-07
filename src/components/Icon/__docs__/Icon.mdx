@@ -1,0 +1,38 @@
+import { Canvas, Meta } from "@storybook/blocks";
+import ExampleIcon from "./ExampleIcon.tsx";
+import * as Icon from "./Icon.stories.tsx";
+
+<Meta of={Icon} title="Icon" />
+
+# Icon
+
+Компонент кнопки
+
+#### Пример
+
+<Canvas of={Icon.SingleIcon} />
+
+### Применение
+
+```ts
+import {Icon} from "willykit";
+
+const DocsIcon = () => {
+  return (
+      <Icon
+        name= {"pluse"},
+    color= {"red"},
+    size= {"24"},
+      />
+  );
+};
+
+export default DocsIcon;
+```
+
+#### Аргументы
+
+- **name** - Название из перечня.
+- **color** - Цвет.
+- **size** - Размер иконки в пикселях. 
+
