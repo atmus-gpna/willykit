@@ -31,4 +31,5 @@ export const enum EIcons {
 export interface IIconProps {
   name: string;
   color?: string;
+  size?: string;
 }
