@@ -1,3 +1,5 @@
+import { Ref } from "react";
+
 export type InputProps = {
   used: "modal" | "header";
   placeholder?: string;
@@ -9,7 +11,13 @@ export type InputProps = {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   autoComplete?: string;
   autoFocus?: boolean;
-  classes?: string;
+  className?: string;
   fullWidth?: boolean;
-  inputRef?: React.Ref<HTMLInputElement>;
+  inputRef?: Ref<HTMLInputElement> | Ref<HTMLTextAreaElement>;
+  endAdornment?: React.ReactNode;
+  startAdornment?: React.ReactNode;
+  width?: number;
+  height?: number;
+  multiline?: boolean;
+  type?: React.HTMLInputTypeAttribute;
 };

@@ -1,17 +1,31 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { InputProps } from "./Input.types";
 
-export const StyledInput = styled.input<InputProps>`
+const sharedStyles = css<InputProps>`
   border: ${(props) =>
     props.error ? "1px solid #EB5757" : "1px solid #0020331a"};
-  min-height: ${(props) => (props.used === "header" ? "28px" : "24px")};
   outline: none;
   border-radius: ${(props) => (props.used === "header" ? "6px" : "2px")};
-  padding: 0 6px;
+  padding: ${(props) => (props.used === "header" ? "7px 6px" : "5px 6px")};
   background: ${(props) =>
     props.disabled ? "#00203305" : props.readOnly ? "#fff" : "#F0F9FF"};
-  color: #002033e5;
-  width: ${(props) => (props.fullWidth ? "100%" : "auto")};
+  color: ${(props) => (props.disabled ? "#0020334D" : "#002033e5")};
+  width: ${(props) =>
+    props.fullWidth ? "100%" : `calc(${props.width}px - 14px)`};
+  font-size: 11px;
+  height: ${(props) =>
+    props.height ? `calc(${props.height}px - 12px)` : "12px"};
+
+  ${(props) =>
+    props.startAdornment ? `height: calc(${props.height}px - 18px);` : ""}
+  ${(props) =>
+    props.startAdornment
+      ? `padding-left: 24px; width: calc(${props.width}px - 32px);`
+      : ""}
+  ${(props) =>
+    props.endAdornment
+      ? `padding-right: 24px; width: calc(${props.width}px - 32px);`
+      : ""}
 
   &::placeholder {
     color: #0020334d;
@@ -26,11 +40,75 @@ export const StyledInput = styled.input<InputProps>`
   }
 `;
 
-export const ErrorText = styled.div`
+export const InputWrapper = styled.div<{
+  fullWidth?: boolean;
+  width?: number;
+  height?: number;
+}>`
+  position: relative;
+  width: ${(props) => (props.fullWidth ? "100%" : `${props.width}px`)};
+
+  ${(props) => props.height && `height: ${props.height}px`}
+`;
+
+const excludedProps = ["error", "endAdornment", "fullWidth", "used"];
+
+export const StyledInput = styled.input.withConfig({
+  shouldForwardProp: (prop) => !excludedProps.includes(prop),
+})<InputProps>`
+  ${sharedStyles}
+`;
+
+export const StyledTextarea = styled.textarea.withConfig({
+  shouldForwardProp: (prop) => !excludedProps.includes(prop),
+})<
+  Omit<
+    InputProps,
+    keyof Pick<
+      InputProps,
+      "type" | "multiline" | "endAdornment" | "startAdornment"
+    >
+  >
+>`
+  ${sharedStyles}
+  min-height: 52px;
+  resize: none;
+  overflow-y: auto;
+  padding-right: 8px;
+  width: ${(props) =>
+    props.fullWidth ? "100%" : `calc(${props.width}px - 16px)`};
+
+  ${(props) => props.height && `height: ${props.height}px`}
+
+  &::-webkit-scrollbar {
+    width: 2px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #00203326;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #0020330d;
+    margin: 8px 0;
+  }
+`;
+
+export const ErrorText = styled.div<{ $isTextArea?: boolean }>`
   margin-left: 6px;
-  margin-top: 3px;
+  margin-top: ${({ $isTextArea }) => ($isTextArea ? "0" : "3px")};
   font-family: "Inter", sans-serif;
   font-size: 9px;
   line-height: 10.8px;
   color: #eb5757;
+`;
+
+export const Adornment = styled.div<{ position: "start" | "end" }>`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  ${(props) => (props.position === "start" ? "left: 6px;" : "right: 6px;")}
+  color: #b0cfe0;
+  pointer-events: none;
 `;

@@ -66,5 +66,8 @@
       "npm run lint",
       "npm run test"
     ]
+  },
+  "dependencies": {
+    "clsx": "^2.1.1"
   }
 }
