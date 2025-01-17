@@ -7,7 +7,7 @@ const Icon: React.FC<IIconProps> = (props) => {
   const { SvgIcon: RawSvgIcon } = useDynamicSvgImport(name);
 
   return (
-    <IconWrapper role="icon">
+    <IconWrapper role="icon" className="icon-wrapper">
       {RawSvgIcon && (
         <RawSvgIcon
           style={{

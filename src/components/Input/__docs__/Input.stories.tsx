@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Input from "../Input";
 import Icon from "../../Icon/Icon";
 import { EIcons } from "../../Icon/icon.types";
-import "./Input.stories.css"; // Локальное подключение стилей
+import "./Input.stories.css";
 
 const meta: Meta<typeof Input> = {
   title: "Input",
@@ -45,7 +45,6 @@ export const ModalEdditable: Story = {
 export const ModalDisabled: Story = {
   args: {
     disabled: true,
-    className: "custom-modal-class",
   },
 };
 
@@ -66,6 +65,9 @@ export const ModalEndAdornment: Story = {
   args: {
     readOnly: false,
     endAdornment: <Icon name={icon?.iconName} />,
+    classes: {
+      endAdornment: "custom-end-adornment-class",
+    },
   },
 };
 

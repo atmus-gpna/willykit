@@ -1,4 +1,4 @@
-import { FC, Ref } from "react";
+import { FC, Ref, useState } from "react";
 import { InputProps } from "./Input.types";
 import {
   ErrorText,
@@ -24,8 +24,12 @@ const Input: FC<InputProps> = ({
   startAdornment,
   endAdornment,
   className,
+  classes = {},
   ...props
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+
   const commonProps = {
     disabled,
     error,
@@ -42,17 +46,33 @@ const Input: FC<InputProps> = ({
       width={width}
       height={height}
       fullWidth={fullWidth}
-      className={clsx("input-wrapper", className)}
+      className={clsx("input-wrapper", classes.root, className)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       {startAdornment && (
-        <Adornment position="start">{startAdornment}</Adornment>
+        <Adornment
+          position="start"
+          className={clsx("input-adornment", classes.startAdornment)}
+        >
+          {startAdornment}
+        </Adornment>
       )}
       {multiline ? (
         <StyledTextarea
           {...commonProps}
           {...props}
           ref={inputRef as Ref<HTMLTextAreaElement>}
-          className={clsx("styled-textarea", className)}
+          className={clsx(
+            "styled-textarea",
+            classes.multiline,
+            error && classes.error,
+            isHovered && classes.hovered,
+            isFocused && classes.focused,
+            disabled && classes.disabled,
+          )}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
         />
       ) : (
         <StyledInput
@@ -61,11 +81,31 @@ const Input: FC<InputProps> = ({
           ref={inputRef as Ref<HTMLInputElement>}
           startAdornment={!!startAdornment}
           endAdornment={!!endAdornment}
-          className={clsx("styled-input", className)}
+          className={clsx(
+            "styled-input",
+            classes.input,
+            error && classes.error,
+            isHovered && classes.hovered,
+            isFocused && classes.focused,
+            disabled && classes.disabled,
+          )}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
         />
       )}
-      {endAdornment && <Adornment position="end">{endAdornment}</Adornment>}
-      {errorText && <ErrorText $isTextArea={multiline}>{errorText}</ErrorText>}
+      {endAdornment && (
+        <Adornment
+          position="end"
+          className={clsx("input-adornment", classes.endAdornment)}
+        >
+          {endAdornment}
+        </Adornment>
+      )}
+      {errorText && (
+        <ErrorText $isTextArea={multiline} className={clsx("input-error-text")}>
+          {errorText}
+        </ErrorText>
+      )}
     </InputWrapper>
   );
 };
