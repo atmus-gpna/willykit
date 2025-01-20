@@ -7,6 +7,7 @@ export type InputProps = {
   errorText?: string;
   readOnly?: boolean;
   disabled?: boolean;
+  required?: boolean;
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   autoComplete?: string;

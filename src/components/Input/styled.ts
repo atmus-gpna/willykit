@@ -40,18 +40,15 @@ const sharedStyles = css<InputProps>`
   }
 `;
 
-export const InputWrapper = styled.div<{
-  fullWidth?: boolean;
-  width?: number;
-  height?: number;
-}>`
-  position: relative;
-  width: ${(props) => (props.fullWidth ? "100%" : `${props.width}px`)};
-
-  ${(props) => props.height && `height: ${props.height}px`}
-`;
-
-const excludedProps = ["error", "endAdornment", "fullWidth", "used"];
+const excludedProps = [
+  "error",
+  "fullWidth",
+  "used",
+  "startAdornment",
+  "endAdornment",
+  "width",
+  "height",
+];
 
 export const StyledInput = styled.input.withConfig({
   shouldForwardProp: (prop) => !excludedProps.includes(prop),

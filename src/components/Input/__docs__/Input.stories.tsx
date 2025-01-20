@@ -1,9 +1,7 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import Input from "../Input";
-import Icon from "../../Icon/Icon";
-import { EIcons } from "../../Icon/icon.types";
-import "./Input.stories.css"; // Локальное подключение стилей
+import "./Input.stories.css";
 
 const meta: Meta<typeof Input> = {
   title: "Input",
@@ -13,10 +11,6 @@ const meta: Meta<typeof Input> = {
     used: "modal",
     readOnly: true,
   },
-};
-
-const icon = {
-  iconName: EIcons.pluse,
 };
 
 export default meta;
@@ -65,7 +59,7 @@ export const ModalFullWidth: Story = {
 export const ModalEndAdornment: Story = {
   args: {
     readOnly: false,
-    endAdornment: <Icon name={icon?.iconName} />,
+    endAdornment: <div>Icon</div>,
   },
 };
 

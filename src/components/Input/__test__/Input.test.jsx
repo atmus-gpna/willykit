@@ -55,4 +55,10 @@ describe("Компонент Input", () => {
     const container = screen.getByRole("textbox").parentElement;
     expect(container).toHaveStyle(`width: 100%`);
   });
+
+  it("должен отображать ноду для startAdornment", () => {
+    render(<Input used="modal" startAdornment={<div>Icon</div>} />);
+    const startAdornment = screen.getByText("Icon");
+    expect(startAdornment).toBeInTheDocument();
+  });
 });

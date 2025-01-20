@@ -1,18 +1,13 @@
 import { FC, Ref } from "react";
 import { InputProps } from "./Input.types";
-import {
-  ErrorText,
-  StyledInput,
-  StyledTextarea,
-  Adornment,
-  InputWrapper,
-} from "./styled";
+import { ErrorText, StyledInput, StyledTextarea, Adornment } from "./styled";
 import clsx from "clsx";
+import { Container } from "../styled";
 
 const Input: FC<InputProps> = ({
   readOnly = false,
   error = false,
-  errorText = "",
+  errorText = "Ошибка",
   autoFocus = false,
   disabled = false,
   used = "header",
@@ -33,12 +28,11 @@ const Input: FC<InputProps> = ({
     autoFocus,
     width,
     height,
-    fullWidth,
     used,
   };
 
   return (
-    <InputWrapper
+    <Container
       width={width}
       height={height}
       fullWidth={fullWidth}
@@ -49,24 +43,28 @@ const Input: FC<InputProps> = ({
       )}
       {multiline ? (
         <StyledTextarea
+          data-testid="input"
           {...commonProps}
           {...props}
           ref={inputRef as Ref<HTMLTextAreaElement>}
           className={clsx("styled-textarea", className)}
+          fullWidth={fullWidth}
         />
       ) : (
         <StyledInput
+          data-testid="input"
           {...commonProps}
           {...props}
           ref={inputRef as Ref<HTMLInputElement>}
           startAdornment={!!startAdornment}
           endAdornment={!!endAdornment}
           className={clsx("styled-input", className)}
+          fullWidth={fullWidth}
         />
       )}
       {endAdornment && <Adornment position="end">{endAdornment}</Adornment>}
-      {errorText && <ErrorText $isTextArea={multiline}>{errorText}</ErrorText>}
-    </InputWrapper>
+      {error && <ErrorText $isTextArea={multiline}>{errorText}</ErrorText>}
+    </Container>
   );
 };
 
