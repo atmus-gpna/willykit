@@ -21,4 +21,15 @@ export type InputProps = {
   height?: number;
   multiline?: boolean;
   type?: React.HTMLInputTypeAttribute;
+  classes?: {
+    root?: string;
+    focused?: string;
+    disabled?: string;
+    error?: string;
+    startAdornment?: string;
+    endAdornment?: string;
+    input?: string;
+    multiline?: string;
+    hovered?: string;
+  };
 };

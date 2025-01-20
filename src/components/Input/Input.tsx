@@ -19,6 +19,7 @@ const Input: FC<InputProps> = ({
   startAdornment,
   endAdornment,
   className,
+  classes = {},
   ...props
 }) => {
   const commonProps = {
@@ -36,10 +37,15 @@ const Input: FC<InputProps> = ({
       width={width}
       height={height}
       fullWidth={fullWidth}
-      className={clsx("input-wrapper", className)}
+      className={clsx("input-wrapper", classes.root, className)}
     >
       {startAdornment && (
-        <Adornment position="start">{startAdornment}</Adornment>
+        <Adornment
+          position="start"
+          className={clsx("input-adornment", classes.startAdornment)}
+        >
+          {startAdornment}
+        </Adornment>
       )}
       {multiline ? (
         <StyledTextarea

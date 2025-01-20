@@ -1,6 +1,16 @@
 .custom-modal-class {
-  input {
-    background: #e0e0e0;
-    border-color: #ff0000;
+  background: #e0e0e0;
+  border-color: #ff0000;
+}
+
+.custom-end-adornment-class {
+  .icon-wrapper {
+    svg {
+      color: red;
+    }
   }
+}
+
+.custom-focused-class {
+  background: red;
 }
