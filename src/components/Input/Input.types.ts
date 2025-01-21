@@ -10,7 +10,6 @@ export type InputProps = {
   required?: boolean;
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  autoComplete?: string;
   autoFocus?: boolean;
   className?: string;
   fullWidth?: boolean;
@@ -21,15 +20,4 @@ export type InputProps = {
   height?: number;
   multiline?: boolean;
   type?: React.HTMLInputTypeAttribute;
-  classes?: {
-    root?: string;
-    focused?: string;
-    disabled?: string;
-    error?: string;
-    startAdornment?: string;
-    endAdornment?: string;
-    input?: string;
-    multiline?: string;
-    hovered?: string;
-  };
 };

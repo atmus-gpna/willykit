@@ -1,10 +1,10 @@
-import { FC, Ref } from "react";
+import { forwardRef, FC, Ref } from "react";
 import { InputProps } from "./Input.types";
 import { ErrorText, StyledInput, StyledTextarea, Adornment } from "./styled";
 import clsx from "clsx";
 import { Container } from "../styled";
 
-const Input: FC<InputProps> = ({
+const InputBase: FC<InputProps> = ({
   readOnly = false,
   error = false,
   errorText = "Ошибка",
@@ -19,7 +19,6 @@ const Input: FC<InputProps> = ({
   startAdornment,
   endAdornment,
   className,
-  classes = {},
   ...props
 }) => {
   const commonProps = {
@@ -37,41 +36,51 @@ const Input: FC<InputProps> = ({
       width={width}
       height={height}
       fullWidth={fullWidth}
-      className={clsx("input-wrapper", classes.root, className)}
+      className={clsx("input-wrapper", className)}
     >
-      {startAdornment && (
-        <Adornment
-          position="start"
-          className={clsx("input-adornment", classes.startAdornment)}
-        >
-          {startAdornment}
-        </Adornment>
-      )}
-      {multiline ? (
-        <StyledTextarea
-          data-testid="input"
-          {...commonProps}
-          {...props}
-          ref={inputRef as Ref<HTMLTextAreaElement>}
-          className={clsx("styled-textarea", className)}
-          fullWidth={fullWidth}
-        />
-      ) : (
-        <StyledInput
-          data-testid="input"
-          {...commonProps}
-          {...props}
-          ref={inputRef as Ref<HTMLInputElement>}
-          startAdornment={!!startAdornment}
-          endAdornment={!!endAdornment}
-          className={clsx("styled-input", className)}
-          fullWidth={fullWidth}
-        />
-      )}
-      {endAdornment && <Adornment position="end">{endAdornment}</Adornment>}
+      <div className="input-container">
+        {startAdornment && (
+          <Adornment position="start" className={clsx("input-adornment")}>
+            {startAdornment}
+          </Adornment>
+        )}
+        {multiline ? (
+          <StyledTextarea
+            data-testid="input"
+            {...commonProps}
+            {...props}
+            ref={inputRef as Ref<HTMLTextAreaElement>}
+            className={clsx("styled-textarea", className)}
+            fullWidth={fullWidth}
+          />
+        ) : (
+          <StyledInput
+            data-testid="input"
+            {...commonProps}
+            {...props}
+            ref={inputRef as Ref<HTMLInputElement>}
+            startAdornment={!!startAdornment}
+            endAdornment={!!endAdornment}
+            className={clsx("styled-input", className)}
+            fullWidth={fullWidth}
+          />
+        )}
+        {endAdornment && <Adornment position="end">{endAdornment}</Adornment>}
+      </div>
       {error && <ErrorText $isTextArea={multiline}>{errorText}</ErrorText>}
     </Container>
   );
 };
 
-export default Input;
+export const Input = forwardRef<
+  HTMLInputElement | HTMLTextAreaElement,
+  InputProps
+>((props, ref) => (
+  <InputBase
+    {...props}
+    inputRef={
+      ref as (instance: HTMLInputElement | HTMLTextAreaElement | null) => void
+    }
+  />
+));
+Input.displayName = "Input";

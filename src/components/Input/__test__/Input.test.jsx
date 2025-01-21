@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
-import Input from "../Input";
+import { Input } from "../Input";
 
 describe("Компонент Input", () => {
   it("должен корректно отобразиться", () => {

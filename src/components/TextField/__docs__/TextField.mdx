@@ -1,34 +1,37 @@
-import * as Input from "./InputExample.stories.tsx";
-import { EIcons } from "../../Icon/icon.types";
-import { Icon } from "../../Icon";
+import * as TextField from "./TextFieldExample.stories.tsx";
 
-# Input
+# TextField
 
 #### Пример
 
 ```ts
-import {Input} from "willykit";
+import {TextField} from "willykit";
 
-const InputExample = () => {
-  const icon = {
-    right: EIcons.pluse,
-    left: EIcons.chart,
-  };
-
-  const [value, setValue] = React.useState<string>("");
+const TextFieldExample = () => {
+  const [value, setValue] = React.useState("");
 
   return (
-    <Input
+    <TextField
       used="modal"
-      placeholder="Enter text..."
-      endAdornment={<Icon name={icon?.right} color="red" />}
+      label="Username"
       readOnly={false}
       autoFocus
-      width={100}
+      placeholder="Write something..."
       error
-      required
+      errorText="Error"
       value={value}
       onChange={(event) => setValue(event.target.value)}
+      className="custom-class"
+      width={400}
+      type={"password"}
+      required
+      slots={{
+        tooltip: {
+          children: "Текст всплывающей подсказки",
+          placement: "right",
+          open: true,
+        },
+      }}
     />
   );
 };
@@ -38,6 +41,7 @@ export default InputExample;
 
 #### Аргументы
 
+- **label*** - Заголовок; 
 - **used*** - Показывает область использования компонента: в модальном окне (modal) или в заголовке окна (header);
 - **placeholder** - Показывает заполняющий пустой Input текст;
 - **error** - Показывает наличие ошибки в данном поле (сопровождается соответствующей окраской обводки-border'а);
@@ -56,3 +60,5 @@ export default InputExample;
 - **endAdornment** - Для расположения иконок в правой части компонента Input;
 - **className** - Для создания пользовательского класса стилей;
 - **type** - Тип инпута ("password", "text" и тд.);
+- **required** - Для обозначения что поле обязательно для заполнения. Отображает символ *
+- **slots** - Для обращения с внутренним элементам, например к tooltip;

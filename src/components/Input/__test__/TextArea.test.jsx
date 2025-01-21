@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
-import Input from "../Input";
+import { Input } from "../Input";
 
 describe("Компонент Input с multiline", () => {
   it("должен рендериться как textarea, если установлен пропс multiline", () => {

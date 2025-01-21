@@ -26,6 +26,11 @@ const sharedStyles = css<InputProps>`
     props.endAdornment
       ? `padding-right: 24px; width: calc(${props.width}px - 32px);`
       : ""}
+      
+  ${(props) =>
+    props.startAdornment && props.endAdornment
+      ? `padding-left: 24px; padding-right: 24px; width: calc(${props.width}px - 50px);`
+      : ""}
 
   &::placeholder {
     color: #0020334d;
@@ -99,6 +104,7 @@ export const ErrorText = styled.div<{ $isTextArea?: boolean }>`
   font-size: 9px;
   line-height: 10.8px;
   color: #eb5757;
+  overflow-wrap: break-word;
 `;
 
 export const Adornment = styled.div<{ position: "start" | "end" }>`
@@ -108,4 +114,10 @@ export const Adornment = styled.div<{ position: "start" | "end" }>`
   ${(props) => (props.position === "start" ? "left: 6px;" : "right: 6px;")}
   color: #b0cfe0;
   pointer-events: none;
+
+  input,
+  button,
+  a {
+    pointer-events: auto;
+  }
 `;

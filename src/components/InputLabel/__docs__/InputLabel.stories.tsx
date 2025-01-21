@@ -20,6 +20,9 @@ export const InputLabelRequired: Story = {
   args: {
     children: "Label",
     required: true,
-    tooltip: "Текст всплывающей подсказки",
+    tooltip: {
+      placement: "bottom",
+      children: "Текст всплывающей подсказки Текст всплывающей подсказки",
+    },
   },
 };

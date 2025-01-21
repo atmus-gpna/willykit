@@ -1,6 +1,6 @@
 .custom-modal-class {
-  background: #e0e0e0;
-  border-color: #ff0000;
+  background: #dfd0d0;
+  border-color: #66ff00;
 }
 
 .custom-end-adornment-class {
@@ -9,8 +9,4 @@
       color: red;
     }
   }
-}
-
-.custom-focused-class {
-  background: red;
 }

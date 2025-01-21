@@ -31,8 +31,12 @@ export const TextFieldModalTooltip: Story = {
   args: {
     label: "Label",
     required: true,
-    tooltip: "Текст",
     readOnly: false,
+    slots: {
+      tooltip: {
+        children: "Текст",
+      },
+    },
   },
 };
 
@@ -40,9 +44,13 @@ export const TextFieldAutoFocus: Story = {
   args: {
     label: "Label",
     required: true,
-    tooltip: "Текст Текст",
     readOnly: false,
     autoFocus: true,
+    slots: {
+      tooltip: {
+        children: "Текст Текст",
+      },
+    },
   },
 };
 
@@ -50,9 +58,13 @@ export const TextFieldMultiline: Story = {
   args: {
     label: "Label",
     required: true,
-    tooltip: "Текст подсказки",
     readOnly: false,
     multiline: true,
+    slots: {
+      tooltip: {
+        children: "Текст подсказки",
+      },
+    },
   },
 };
 
@@ -60,10 +72,15 @@ export const TextFieldMultilineError: Story = {
   args: {
     label: "Label",
     required: true,
-    tooltip: "Текст всплывающей",
     readOnly: false,
     multiline: true,
     error: true,
+    slots: {
+      tooltip: {
+        children: "Текст всплывающей",
+        placement: "bottom",
+      },
+    },
   },
 };
 
@@ -71,10 +88,15 @@ export const TextFieldTest: Story = {
   args: {
     label: "Label",
     required: true,
-    tooltip: "Текст всплывающей подсказки",
     readOnly: false,
     type: "password",
     className: "custom-class",
     width: 100,
+    slots: {
+      tooltip: {
+        children: "Текст всплывающей подсказки",
+        open: true,
+      },
+    },
   },
 };

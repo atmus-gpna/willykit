@@ -4,8 +4,8 @@ import { StyledLabel } from "./styled";
 
 const InputLabel: React.FC<InputLabelProps> = ({
   children,
-  tooltip = "Текст всплывающей подсказки",
   required = false,
+  tooltip,
 }) => {
   return (
     <StyledLabel>
@@ -13,7 +13,7 @@ const InputLabel: React.FC<InputLabelProps> = ({
         {children}
         {required && " *"}
       </div>
-      {tooltip && <Tooltip>{tooltip}</Tooltip>}
+      {tooltip && <Tooltip {...tooltip}>{tooltip.children}</Tooltip>}
     </StyledLabel>
   );
 };

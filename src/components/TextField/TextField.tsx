@@ -1,40 +1,51 @@
-import { FC } from "react";
-import { TextFieldProps } from "./TextField.types";
+import { forwardRef } from "react";
 import clsx from "clsx";
-import Input from "../Input";
 import { InputLabel } from "../InputLabel";
 import { Container } from "../styled";
+import Input from "../Input";
+import { TextFieldProps } from "./TextField.types";
 
-const TextField: FC<TextFieldProps> = ({
-  label,
-  used,
-  tooltip,
-  className,
-  fullWidth,
-  width = 200,
-  required,
-  ...props
-}) => {
-  return (
-    <Container
-      fullWidth={fullWidth}
-      width={width}
-      className={clsx("text-field-wrapper", className)}
-    >
-      {label && (
-        <InputLabel tooltip={tooltip} required={required}>
-          {label}
-        </InputLabel>
-      )}
-      <Input
-        used={used}
-        {...props}
+const TextField = forwardRef<
+  HTMLInputElement | HTMLTextAreaElement,
+  TextFieldProps
+>(
+  (
+    {
+      label,
+      used,
+      className,
+      fullWidth,
+      slots,
+      width = 200,
+      required,
+      ...props
+    },
+    ref,
+  ) => {
+    return (
+      <Container
         fullWidth={fullWidth}
         width={width}
-        className={clsx("text-field-input")}
-      />
-    </Container>
-  );
-};
+        className={clsx("text-field-wrapper", className)}
+        data-testid="container"
+      >
+        {label && (
+          <InputLabel tooltip={slots?.tooltip} required={required}>
+            {label}
+          </InputLabel>
+        )}
+        <Input
+          ref={ref}
+          used={used}
+          {...props}
+          fullWidth={fullWidth}
+          width={width}
+        />
+      </Container>
+    );
+  },
+);
+
+TextField.displayName = "TextField";
 
 export default TextField;

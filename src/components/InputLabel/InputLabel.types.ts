@@ -1,9 +1,10 @@
+import { TooltipProps } from "../Tooltip/Tooltip.types";
+
 export type InputLabelProps = {
-  children?: React.ReactNode;
-  tooltip?: string;
+  children: React.ReactNode;
   disabled?: boolean;
   error?: boolean;
-  focused?: boolean;
   required?: boolean;
   variant?: "filled" | "outlined" | "standard";
+  tooltip?: TooltipProps;
 };

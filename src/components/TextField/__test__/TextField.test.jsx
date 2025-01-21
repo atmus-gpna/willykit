@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import TextField from "../TextField";
+import { vi } from "vitest";
+import TextFieldExample from "../__docs__/TextFieldExample";
 
 describe("Компонент TextField", () => {
   it("отображает метку, если она передана", () => {
@@ -19,13 +21,53 @@ describe("Компонент TextField", () => {
   });
 
   it("отображает контейнер с переданным классом", () => {
-    render(<TextField className="my-class" />);
-    const container = screen.getByText("Label *").closest(".my-class");
-    expect(container).toBeInTheDocument();
+    render(<TextField className="custom-class" />);
+    expect(screen.getByTestId("container")).toHaveClass("custom-class");
   });
 
   it("отображает инпут без ширины 100%, если fullWidth=false", () => {
     render(<TextField />);
     expect(screen.getByRole("textbox")).not.toHaveStyle("width: 100%");
+  });
+
+  it("отображает placeholder, если он передан", () => {
+    render(<TextField placeholder="Write something..." />);
+    expect(
+      screen.getByPlaceholderText("Write something..."),
+    ).toBeInTheDocument();
+  });
+
+  it("отображает ошибку, если она передана", () => {
+    render(<TextField error errorText="Error" />);
+    expect(screen.getByText("Error")).toBeInTheDocument();
+  });
+
+  it("отображает значение, если оно передано", () => {
+    render(<TextField value="Hello World" />);
+    expect(screen.getByRole("textbox")).toHaveValue("Hello World");
+  });
+
+  it("вызывает onChange, когда значение изменяется", () => {
+    const onChange = vi.fn();
+    render(<TextField value="Hello World" onChange={onChange} />);
+    const input = screen.getByRole("textbox");
+    fireEvent.change(input, { target: { value: "New Value" } });
+    expect(onChange).toHaveBeenCalledTimes(1);
+  });
+
+  test("отображает TextField с тултипом", () => {
+    render(<TextFieldExample />);
+
+    expect(screen.getByText("Текст всплывающей подсказки")).toBeInTheDocument();
+  });
+
+  it("отображает disabled, если оно передано", () => {
+    render(<TextField disabled />);
+    expect(screen.getByRole("textbox")).toBeDisabled();
+  });
+
+  it("отображает readOnly, если оно передано", () => {
+    render(<TextField readOnly />);
+    expect(screen.getByRole("textbox")).toHaveAttribute("readonly");
   });
 });

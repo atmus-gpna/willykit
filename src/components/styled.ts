@@ -13,4 +13,8 @@ export const Container = styled.div.withConfig({
   width: ${(props) => (props.fullWidth ? "100%" : `${props.width}px`)};
 
   ${(props) => props.height && `height: ${props.height}px`}
+
+  .input-container {
+    position: relative;
+  }
 `;
