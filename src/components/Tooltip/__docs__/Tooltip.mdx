@@ -1,0 +1,28 @@
+import * as Tooltip from "./Tooltip.stories.tsx";
+
+# Tooltip
+
+#### Пример
+
+```ts
+import { Tooltip } from "willykit";
+
+const Example = () => {
+  return (
+      <Tooltip
+        placement: "right"
+        open: "true"
+        >
+            Текст метки
+        </Tooltip>
+  );
+};
+
+export default Example;
+```
+
+#### Аргументы
+
+- **children** - любая ReactNode;
+- **placement** - положение;
+- **open** - состояние открыт ли тултип;

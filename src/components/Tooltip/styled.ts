@@ -8,6 +8,8 @@ export const TooltipContainer = styled.div<{
   display: inline-block;
 
   .tooltip-text {
+    font-size: 11px;
+    font-family: "Inter", sans-serif;
     visibility: ${(props) => (props.open ? "visible" : "hidden")};
     opacity: ${(props) => (props.open ? "1" : "0")};
     background-color: #fff;

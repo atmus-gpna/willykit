@@ -53,7 +53,7 @@ describe("Компонент Input с multiline", () => {
   it("должен растягиваться на всю ширину, если установлен fullWidth", () => {
     render(<Input used="modal" multiline fullWidth />);
     const container = screen.getByRole("textbox").parentElement;
-    expect(container).toHaveStyle(`width: 100%`);
+    expect(container).toHaveStyle(`width: "100%"`);
   });
 
   it("должен применить переданный className", () => {

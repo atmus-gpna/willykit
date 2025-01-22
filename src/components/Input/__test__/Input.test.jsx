@@ -53,7 +53,7 @@ describe("Компонент Input", () => {
   it("должен растягиваться на всю ширину, если установлен fullWidth", () => {
     render(<Input used="modal" fullWidth />);
     const container = screen.getByRole("textbox").parentElement;
-    expect(container).toHaveStyle(`width: 100%`);
+    expect(container).toHaveStyle(`width: "100%"`);
   });
 
   it("должен отображать ноду для startAdornment", () => {
