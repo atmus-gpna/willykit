@@ -10,8 +10,8 @@ const meta: Meta<typeof TextFieldExample> = {
   },
   argTypes: {
     variant: {
-      control: { type: "select" }, // Указываем, что будет выпадающий список
-      options: ["standard", "header", "fieldset"], // Список допустимых значений
+      control: { type: "select" },
+      options: ["standard", "header", "fieldset"],
       description: "Select the variant of the TextField",
       table: {
         type: { summary: `"standard" | "header" | "fieldset"` },
