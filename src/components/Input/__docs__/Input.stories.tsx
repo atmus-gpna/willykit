@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Input } from "../Input";
 import Icon from "../../Icon/Icon";
 import { EIcons } from "../../Icon/icon.types";
-import "./Input.css";
 
 const meta: Meta<typeof Input> = {
   title: "Input",
