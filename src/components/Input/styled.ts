@@ -1,17 +1,33 @@
 import styled, { css } from "styled-components";
-import { InputProps } from "./Input.types";
+import { AdornmentProps, InputProps } from "./Input.types";
 
 const sharedStyles = css<InputProps>`
   border: ${(props) =>
     props.error ? "1px solid #EB5757" : "1px solid #0020331a"};
   outline: none;
-  border-radius: ${(props) => (props.used === "header" ? "6px" : "2px")};
-  padding: ${(props) => (props.used === "header" ? "7px 6px" : "5px 6px")};
+  border-radius: ${(props) =>
+    props.variant === "header"
+      ? "6px"
+      : props.variant === "fieldset"
+        ? "0"
+        : "2px"};
+  padding: ${(props) =>
+    props.variant === "header"
+      ? "7px 8px"
+      : props.variant === "fieldset"
+        ? "7px 10px"
+        : "5px 6px"};
   background: ${(props) =>
     props.disabled ? "#00203305" : props.readOnly ? "#fff" : "#F0F9FF"};
   color: ${(props) => (props.disabled ? "#0020334D" : "#002033e5")};
   width: ${(props) =>
-    props.fullWidth ? "100%" : `calc(${props.width}px - 14px)`};
+    props.fullWidth
+      ? `calc(100% - 22px)`
+      : props.variant === "fieldset"
+        ? `calc(100% - 22px)`
+        : props.variant === "header"
+          ? `calc(${props.width}px - 18px)`
+          : `calc(${props.width}px - 14px)`};
   font-size: 11px;
   height: ${(props) =>
     props.height ? `calc(${props.height}px - 12px)` : "12px"};
@@ -37,18 +53,20 @@ const sharedStyles = css<InputProps>`
   }
 
   &:hover {
-    border: 1px solid #006fba66;
+    border: ${(props) =>
+      props.readOnly ? "1px solid #0020331a" : "1px solid #006fba66"};
   }
 
   &:focus {
-    border: 1px solid #006fba;
+    border: ${(props) =>
+      props.readOnly ? "1px solid #0020331a" : "1px solid #006fba"};
   }
 `;
 
 const excludedProps = [
   "error",
   "fullWidth",
-  "used",
+  "variant",
   "startAdornment",
   "endAdornment",
   "width",
@@ -107,7 +125,7 @@ export const ErrorText = styled.div<{ $isTextArea?: boolean }>`
   overflow-wrap: break-word;
 `;
 
-export const Adornment = styled.div<{ position: "start" | "end" }>`
+export const Adornment = styled.div<AdornmentProps>`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);

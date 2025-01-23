@@ -3,17 +3,25 @@ import { InputLabelProps } from "./InputLabel.types";
 import { StyledLabel } from "./styled";
 
 const InputLabel: React.FC<InputLabelProps> = ({
-  children,
+  label,
   required = false,
   tooltip,
+  variant,
+  error,
+  errorText,
 }) => {
   return (
-    <StyledLabel>
-      <div>
-        {children}
+    <StyledLabel variant={variant}>
+      <>
+        {label}
         {required && " *"}
-      </div>
+      </>
       {tooltip && <Tooltip {...tooltip}>{tooltip.children}</Tooltip>}
+      {error && (
+        <Tooltip className="error-tooltip" {...tooltip}>
+          {errorText}
+        </Tooltip>
+      )}
     </StyledLabel>
   );
 };

@@ -4,8 +4,7 @@ import { TooltipProps } from "../Tooltip/Tooltip.types";
 
 export interface TextFieldProps
   extends Omit<InputProps, "tooltip">,
-    Omit<InputLabelProps, "children"> {
-  label: string;
+    InputLabelProps {
   slots?: {
     tooltip?: TooltipProps;
   };

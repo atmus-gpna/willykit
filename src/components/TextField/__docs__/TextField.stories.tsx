@@ -6,8 +6,40 @@ const meta: Meta<typeof TextField> = {
   component: TextField,
   args: {
     placeholder: "Enter text...",
-    used: "modal",
+    variant: "standard",
     readOnly: true,
+    error: false,
+    errorText: "Error",
+    value: "",
+    onChange: () => {},
+  },
+  argTypes: {
+    variant: {
+      control: { type: "select" },
+      options: ["standard", "header", "fieldset"],
+      description: "Выберите вариант TextField",
+      table: {
+        type: { summary: `"standard" | "header" | "fieldset"` },
+      },
+    },
+    type: {
+      control: { type: "select" },
+      options: [
+        "text",
+        "password",
+        "email",
+        "number",
+        "date",
+        "datetime-local",
+        "month",
+        "week",
+        "time",
+      ],
+      description: "Выберите тип поля ввода",
+      table: {
+        type: { summary: "React.HTMLInputTypeAttribute" },
+      },
+    },
   },
 };
 
@@ -75,6 +107,7 @@ export const TextFieldMultilineError: Story = {
     readOnly: false,
     multiline: true,
     error: true,
+    errorText: "Текст ошибки",
     slots: {
       tooltip: {
         children: "Текст всплывающей",
@@ -84,18 +117,17 @@ export const TextFieldMultilineError: Story = {
   },
 };
 
-export const TextFieldTest: Story = {
+export const TextFieldFieldSet: Story = {
   args: {
     label: "Label",
     required: true,
     readOnly: false,
     type: "password",
     className: "custom-class",
-    width: 100,
+    width: 300,
     slots: {
       tooltip: {
         children: "Текст всплывающей подсказки",
-        open: true,
       },
     },
   },

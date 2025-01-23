@@ -6,7 +6,7 @@ const meta: Meta<typeof Input> = {
   component: Input,
   args: {
     placeholder: "Enter text...",
-    used: "modal",
+    variant: "standard",
     multiline: true,
     readOnly: true,
   },

@@ -2,31 +2,69 @@ import React from "react";
 import TextField from "../TextField";
 
 const TextFieldExample = () => {
-  const [value, setValue] = React.useState("");
+  const [values, setValues] = React.useState(["", "", "Текст"]); // Массив значений для каждого TextField
+
+  // Конфигурации для каждого TextField
+  const textFieldsConfig = [
+    {
+      id: 1,
+      label: "First Name",
+      placeholder: "Enter your first name",
+      type: "text",
+      error: false,
+      errorText: "",
+    },
+    {
+      id: 2,
+      label: "Last Name",
+      placeholder: "Enter your last name",
+      type: "text",
+      error: false,
+      errorText: "",
+    },
+    {
+      id: 3,
+      label: "Email",
+      placeholder: "Enter your email",
+      type: "email",
+      error: false,
+      errorText: "",
+      readOnly: true,
+    },
+  ];
+
+  const handleChange =
+    (index: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
+      const updatedValues = [...values];
+      updatedValues[index] = event.target.value;
+      setValues(updatedValues);
+    };
 
   return (
-    <TextField
-      used="modal"
-      label="Username"
-      readOnly={false}
-      autoFocus
-      placeholder="Write something..."
-      error
-      errorText="Error"
-      value={value}
-      onChange={(event) => setValue(event.target.value)}
-      className="custom-class"
-      width={400}
-      type={"password"}
-      required
-      slots={{
-        tooltip: {
-          children: "Текст всплывающей подсказки",
-          placement: "right",
-          open: true,
-        },
-      }}
-    />
+    <>
+      {textFieldsConfig.map((config, index) => (
+        <TextField
+          key={config.id}
+          variant="fieldset"
+          label={config.label}
+          placeholder={config.placeholder}
+          type={config.type}
+          error={config.error}
+          errorText={config.errorText}
+          value={values[index]}
+          onChange={handleChange(index)}
+          width={300}
+          required
+          readOnly={config.readOnly}
+          slots={{
+            tooltip: {
+              children: "Текст всплывающей подсказки",
+              placement: "bottom",
+            },
+          }}
+        />
+      ))}
+    </>
   );
 };
 

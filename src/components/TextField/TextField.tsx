@@ -1,9 +1,9 @@
 import { forwardRef } from "react";
-import clsx from "clsx";
 import { InputLabel } from "../InputLabel";
 import { Container } from "../styled";
 import Input from "../Input";
 import { TextFieldProps } from "./TextField.types";
+import classnames from "../../utils/classnames";
 
 const TextField = forwardRef<
   HTMLInputElement | HTMLTextAreaElement,
@@ -12,12 +12,12 @@ const TextField = forwardRef<
   (
     {
       label,
-      used,
       className,
       fullWidth,
       slots,
       width = 200,
       required,
+      variant = "standard",
       ...props
     },
     ref,
@@ -26,20 +26,26 @@ const TextField = forwardRef<
       <Container
         fullWidth={fullWidth}
         width={width}
-        className={clsx("text-field-wrapper", className)}
+        className={classnames("text-field-wrapper", className)}
+        variant={variant}
         data-testid="container"
       >
         {label && (
-          <InputLabel tooltip={slots?.tooltip} required={required}>
-            {label}
-          </InputLabel>
+          <InputLabel
+            variant={variant}
+            tooltip={slots?.tooltip}
+            required={required}
+            error={variant === "fieldset" && props.error}
+            errorText={props.errorText}
+            label={label}
+          />
         )}
         <Input
           ref={ref}
-          used={used}
-          {...props}
+          variant={variant}
           fullWidth={fullWidth}
           width={width}
+          {...props}
         />
       </Container>
     );

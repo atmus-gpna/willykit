@@ -4,24 +4,24 @@ import InputLabel from "../InputLabel";
 
 describe("Компонент InputLabel", () => {
   it("отображает содержимое корректно", () => {
-    render(<InputLabel>Текст метки</InputLabel>);
+    render(<InputLabel label="Текст метки" />);
     expect(screen.getByText("Текст метки")).toBeInTheDocument();
   });
 
   it("отображает астериск при наличии свойства required", () => {
-    render(<InputLabel required>Текст метки</InputLabel>);
+    render(<InputLabel required label="Текст метки" />);
     expect(
       screen.getByText((content) => content.includes("*")),
     ).toBeInTheDocument();
   });
 
   it("отображает иконку подсказки при наличии свойства tooltip", () => {
-    render(<InputLabel tooltip>Текст метки</InputLabel>);
+    render(<InputLabel tooltip label="Текст метки" />);
     expect(screen.getByRole("icon")).toBeInTheDocument();
   });
 
   it("не отображает иконку подсказки при отсутствии свойства tooltip", () => {
-    render(<InputLabel>Текст метки</InputLabel>);
+    render(<InputLabel label="Текст метки" />);
     expect(screen.queryByRole("icon")).not.toBeInTheDocument();
   });
 });

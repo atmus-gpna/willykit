@@ -19,7 +19,7 @@ const InputExample = () => {
 
   return (
     <Input
-      used="modal"
+      variant="standard"
       placeholder="Enter text..."
       endAdornment={<Icon name={icon?.right} color="red" />}
       readOnly={false}
@@ -38,7 +38,7 @@ export default InputExample;
 
 #### Аргументы
 
-- **used*** - Показывает область использования компонента: в модальном окне (modal) или в заголовке окна (header);
+- **variant*** - Показывает область использования компонента: в модальном окне (standard), в заголовке окна (header), в таблице (fieldset);
 - **placeholder** - Показывает заполняющий пустой Input текст;
 - **error** - Показывает наличие ошибки в данном поле (сопровождается соответствующей окраской обводки-border'а);
 - **errorText** - Показывает текст ошибки у данного поля;

@@ -1,7 +1,7 @@
 import { Ref } from "react";
 
 export type InputProps = {
-  used: "modal" | "header";
+  variant: "standard" | "header" | "fieldset";
   placeholder?: string;
   error?: boolean;
   errorText?: string;
@@ -21,3 +21,7 @@ export type InputProps = {
   multiline?: boolean;
   type?: React.HTMLInputTypeAttribute;
 };
+
+export interface AdornmentProps {
+  position: "start" | "end";
+}

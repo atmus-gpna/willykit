@@ -6,7 +6,17 @@ const meta: Meta<typeof TextFieldExample> = {
   component: TextFieldExample,
   args: {
     placeholder: "Enter text...",
-    used: "modal",
+    variant: "standard",
+  },
+  argTypes: {
+    variant: {
+      control: { type: "select" }, // Указываем, что будет выпадающий список
+      options: ["standard", "header", "fieldset"], // Список допустимых значений
+      description: "Select the variant of the TextField",
+      table: {
+        type: { summary: `"standard" | "header" | "fieldset"` },
+      },
+    },
   },
 };
 

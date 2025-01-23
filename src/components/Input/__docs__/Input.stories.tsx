@@ -10,7 +10,7 @@ const meta: Meta<typeof Input> = {
   component: Input,
   args: {
     placeholder: "Enter text...",
-    used: "modal",
+    variant: "standard",
     readOnly: true,
   },
 };
@@ -72,13 +72,13 @@ export const ModalEndAdornment: Story = {
 
 export const Header: Story = {
   args: {
-    used: "header",
+    variant: "header",
   },
 };
 
 export const HeaderWidthError: Story = {
   args: {
-    used: "header",
+    variant: "header",
     error: true,
     errorText: "Ошибка",
   },
@@ -86,21 +86,21 @@ export const HeaderWidthError: Story = {
 
 export const HeaderEdditable: Story = {
   args: {
-    used: "header",
+    variant: "header",
     readOnly: false,
   },
 };
 
 export const HeaderDisabled: Story = {
   args: {
-    used: "header",
+    variant: "header",
     disabled: true,
   },
 };
 
 export const HeaderAutoFocus: Story = {
   args: {
-    used: "header",
+    variant: "header",
     autoFocus: true,
     readOnly: false,
   },

@@ -2,7 +2,6 @@ import { describe, expect, it } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
 import TextField from "../TextField";
 import { vi } from "vitest";
-import TextFieldExample from "../__docs__/TextFieldExample";
 
 describe("Компонент TextField", () => {
   it("отображает метку, если она передана", () => {
@@ -53,12 +52,6 @@ describe("Компонент TextField", () => {
     const input = screen.getByRole("textbox");
     fireEvent.change(input, { target: { value: "New Value" } });
     expect(onChange).toHaveBeenCalledTimes(1);
-  });
-
-  test("отображает TextField с тултипом", () => {
-    render(<TextFieldExample />);
-
-    expect(screen.getByText("Текст всплывающей подсказки")).toBeInTheDocument();
   });
 
   it("отображает disabled, если оно передано", () => {

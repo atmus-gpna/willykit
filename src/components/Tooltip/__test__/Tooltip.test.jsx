@@ -3,54 +3,53 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Tooltip from "../Tooltip";
 
-describe("Tooltip Component", () => {
-  test("renders Tooltip component correctly", () => {
+describe("Компонент Tooltip", () => {
+  test("Компонент Tooltip рендерится корректно", () => {
     render(
       <Tooltip open={true} placement="right">
-        Tooltip Text
+        Текст тултипа
       </Tooltip>,
     );
 
-    // Check if tooltip text is rendered
-    const tooltipText = screen.getByText("Tooltip Text");
+    const tooltipText = screen.getByText("Текст тултипа");
     expect(tooltipText).toBeInTheDocument();
   });
 
-  test("tooltip text is visible when open is true", () => {
+  test("Текст тултипа видим, когда `open` равно true", () => {
     render(
       <Tooltip open={true} placement="right">
-        Visible Tooltip Text
+        Видимый текст тултипа
       </Tooltip>,
     );
 
-    const tooltipText = screen.getByText("Visible Tooltip Text");
+    const tooltipText = screen.getByText("Видимый текст тултипа");
     expect(tooltipText).toHaveStyle("visibility: visible");
     expect(tooltipText).toHaveStyle("opacity: 1");
   });
 
-  test("tooltip placement is applied correctly (right)", () => {
+  test("Корректно применено размещение тултипа (право)", () => {
     render(
       <Tooltip open={true} placement="right">
-        Tooltip with Right Placement
+        Тултип с размещением справа
       </Tooltip>,
     );
 
     const tooltipContainer = screen.getByText(
-      "Tooltip with Right Placement",
+      "Тултип с размещением справа",
     ).parentElement;
     expect(tooltipContainer).toHaveStyle(`left: "20px"`);
     expect(tooltipContainer).toHaveStyle(`bottom: "0"`);
   });
 
-  test("tooltip placement is applied correctly (bottom)", () => {
+  test("Корректно применено размещение тултипа (низ)", () => {
     render(
       <Tooltip open={true} placement="bottom">
-        Tooltip with Bottom Placement
+        Тултип с размещением снизу
       </Tooltip>,
     );
 
     const tooltipContainer = screen.getByText(
-      "Tooltip with Bottom Placement",
+      "Тултип с размещением снизу",
     ).parentElement;
     expect(tooltipContainer).toHaveStyle("bottom: auto");
     expect(tooltipContainer).toHaveStyle("left: auto");

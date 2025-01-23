@@ -12,13 +12,13 @@ type Story = StoryObj<typeof InputLabel>;
 
 export const InputLabelDefault: Story = {
   args: {
-    children: "Label",
+    label: "Label",
   },
 };
 
 export const InputLabelRequired: Story = {
   args: {
-    children: "Label",
+    label: "Label",
     required: true,
     tooltip: {
       placement: "bottom",

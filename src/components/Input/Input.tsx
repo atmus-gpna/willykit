@@ -1,8 +1,8 @@
 import { forwardRef, FC, Ref } from "react";
 import { InputProps } from "./Input.types";
 import { ErrorText, StyledInput, StyledTextarea, Adornment } from "./styled";
-import clsx from "clsx";
 import { Container } from "../styled";
+import classnames from "../../utils/classnames";
 
 const InputBase: FC<InputProps> = ({
   readOnly = false,
@@ -10,7 +10,7 @@ const InputBase: FC<InputProps> = ({
   errorText = "Ошибка",
   autoFocus = false,
   disabled = false,
-  used = "header",
+  variant = "standard",
   inputRef,
   width = 200,
   height,
@@ -28,7 +28,7 @@ const InputBase: FC<InputProps> = ({
     autoFocus,
     width,
     height,
-    used,
+    variant,
   };
 
   return (
@@ -36,11 +36,11 @@ const InputBase: FC<InputProps> = ({
       width={width}
       height={height}
       fullWidth={fullWidth}
-      className={clsx("input-wrapper", className)}
+      className={classnames("input-wrapper", className)}
     >
       <div className="input-container">
         {startAdornment && (
-          <Adornment position="start" className={clsx("input-adornment")}>
+          <Adornment position="start" className={classnames("input-adornment")}>
             {startAdornment}
           </Adornment>
         )}
@@ -50,7 +50,7 @@ const InputBase: FC<InputProps> = ({
             {...commonProps}
             {...props}
             ref={inputRef as Ref<HTMLTextAreaElement>}
-            className={clsx("styled-textarea", className)}
+            className={classnames("styled-textarea", className)}
             fullWidth={fullWidth}
           />
         ) : (
@@ -61,13 +61,15 @@ const InputBase: FC<InputProps> = ({
             ref={inputRef as Ref<HTMLInputElement>}
             startAdornment={!!startAdornment}
             endAdornment={!!endAdornment}
-            className={clsx("styled-input", className)}
+            className={classnames("styled-input", className)}
             fullWidth={fullWidth}
           />
         )}
         {endAdornment && <Adornment position="end">{endAdornment}</Adornment>}
       </div>
-      {error && <ErrorText $isTextArea={multiline}>{errorText}</ErrorText>}
+      {error && variant !== "fieldset" && (
+        <ErrorText $isTextArea={multiline}>{errorText}</ErrorText>
+      )}
     </Container>
   );
 };

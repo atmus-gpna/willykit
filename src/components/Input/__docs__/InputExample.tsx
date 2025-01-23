@@ -13,7 +13,7 @@ const InputExample = () => {
 
   return (
     <Input
-      used="modal"
+      variant="standard"
       placeholder="Enter text..."
       endAdornment={<Icon name={icon?.right} color="red" />}
       startAdornment={<input type="checkbox" />}

@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 export const TooltipContainer = styled.div<{
   open: boolean;
-  placement: string;
+  $placement: string;
 }>`
   position: relative;
   display: inline-block;
+  fill: #0020334d;
 
   .tooltip-text {
     font-size: 11px;
@@ -25,7 +26,7 @@ export const TooltipContainer = styled.div<{
     z-index: 1000;
     width: max-content;
     ${(props) => {
-      switch (props.placement) {
+      switch (props.$placement) {
         case "bottom":
           return `
             bottom: auto;
@@ -43,6 +44,11 @@ export const TooltipContainer = styled.div<{
           `;
       }
     }}
+  }
+
+  &.error-tooltip {
+    margin-left: auto;
+    fill: #eb5757;
   }
 
   &:hover .tooltip-text {

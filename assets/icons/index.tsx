@@ -25,4 +25,4 @@ export { default as table } from "./16x16/Table.svg?react";
 export { default as tableAdd } from "./16x16/TableAdd.svg?react";
 export { default as tag } from "./16x16/Tag.svg?react";
 export { default as upload } from "./16x16/Upload.svg?react";
-export { default as tooltip } from "./12x12/Tooltip.svg?react";
+export { default as info } from "./12x12/Info.svg?react";
