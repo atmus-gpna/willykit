@@ -14,6 +14,7 @@ const InputBase: FC<InputProps> = ({
   inputRef,
   width = 200,
   height,
+  component,
   fullWidth,
   multiline = false,
   startAdornment,
@@ -67,7 +68,7 @@ const InputBase: FC<InputProps> = ({
         )}
         {endAdornment && <Adornment position="end">{endAdornment}</Adornment>}
       </div>
-      {error && variant !== "fieldset" && (
+      {error && component !== "fieldset" && (
         <ErrorText $isTextArea={multiline}>{errorText}</ErrorText>
       )}
     </Container>

@@ -10,16 +10,14 @@ const meta: Meta<typeof TextField> = {
     readOnly: true,
     error: false,
     errorText: "Error",
-    value: "",
-    onChange: () => {},
   },
   argTypes: {
     variant: {
       control: { type: "select" },
-      options: ["standard", "header", "fieldset"],
+      options: ["standard", "fieldset"],
       description: "Выберите вариант TextField",
       table: {
-        type: { summary: `"standard" | "header" | "fieldset"` },
+        type: { summary: `"standard" | "fieldset"` },
       },
     },
     type: {
@@ -46,7 +44,7 @@ const meta: Meta<typeof TextField> = {
 export default meta;
 type Story = StoryObj<typeof TextField>;
 
-export const TextFieldModal: Story = {
+export const TextFieldDefault: Story = {
   args: {
     label: "Label",
   },
@@ -120,15 +118,18 @@ export const TextFieldMultilineError: Story = {
 export const TextFieldFieldSet: Story = {
   args: {
     label: "Label",
+    component: "fieldset",
+    variant: "filled",
     required: true,
     readOnly: false,
     type: "password",
-    className: "custom-class",
     width: 300,
     slots: {
       tooltip: {
         children: "Текст всплывающей подсказки",
       },
     },
+    error: true,
+    errorText: "Текст ошибки",
   },
 };

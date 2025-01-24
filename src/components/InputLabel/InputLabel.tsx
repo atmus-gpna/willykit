@@ -6,12 +6,12 @@ const InputLabel: React.FC<InputLabelProps> = ({
   label,
   required = false,
   tooltip,
-  variant,
+  component = "input",
   error,
   errorText,
 }) => {
   return (
-    <StyledLabel variant={variant}>
+    <StyledLabel component={component}>
       <>
         {label}
         {required && " *"}

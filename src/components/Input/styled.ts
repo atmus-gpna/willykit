@@ -5,29 +5,16 @@ const sharedStyles = css<InputProps>`
   border: ${(props) =>
     props.error ? "1px solid #EB5757" : "1px solid #0020331a"};
   outline: none;
-  border-radius: ${(props) =>
-    props.variant === "header"
-      ? "6px"
-      : props.variant === "fieldset"
-        ? "0"
-        : "2px"};
-  padding: ${(props) =>
-    props.variant === "header"
-      ? "7px 8px"
-      : props.variant === "fieldset"
-        ? "7px 10px"
-        : "5px 6px"};
+  padding: 5px 6px;
   background: ${(props) =>
-    props.disabled ? "#00203305" : props.readOnly ? "#fff" : "#F0F9FF"};
+    props.disabled
+      ? "#00203305"
+      : props.variant === "standard"
+        ? "#fff"
+        : "#F0F9FF"};
   color: ${(props) => (props.disabled ? "#0020334D" : "#002033e5")};
   width: ${(props) =>
-    props.fullWidth
-      ? `calc(100% - 22px)`
-      : props.variant === "fieldset"
-        ? `calc(100% - 22px)`
-        : props.variant === "header"
-          ? `calc(${props.width}px - 18px)`
-          : `calc(${props.width}px - 14px)`};
+    props.fullWidth ? `calc(100% - 14px)` : `calc(${props.width}px - 14px)`};
   font-size: 11px;
   height: ${(props) =>
     props.height ? `calc(${props.height}px - 12px)` : "12px"};

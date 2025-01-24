@@ -10,7 +10,7 @@ const meta: Meta<typeof Input> = {
   args: {
     placeholder: "Enter text...",
     variant: "standard",
-    readOnly: true,
+    readOnly: false,
   },
 };
 
@@ -21,86 +21,46 @@ const icon = {
 export default meta;
 type Story = StoryObj<typeof Input>;
 
-export const ModalShort: Story = {
+export const InputStandard: Story = {
+  args: {},
+};
+
+export const InputFilled: Story = {
   args: {
-    width: 100,
-    height: 30,
+    variant: "filled",
   },
 };
 
-export const ModalWithError: Story = {
+export const InputReadOnly: Story = {
   args: {
+    readOnly: true,
+    value: "Text",
+  },
+};
+
+export const InputError: Story = {
+  args: {
+    readOnly: true,
+    value: "Text",
     error: true,
-    errorText: "Ошибка",
+    errorText: "Описание ошибки",
   },
 };
 
-export const ModalEdditable: Story = {
-  args: {
-    readOnly: false,
-    className: "custom-modal-class",
-  },
-};
-
-export const ModalDisabled: Story = {
-  args: {
-    disabled: true,
-    className: "custom-modal-class",
-  },
-};
-
-export const ModalAutoFocus: Story = {
-  args: {
-    autoFocus: true,
-    readOnly: false,
-  },
-};
-
-export const ModalFullWidth: Story = {
+export const InputFullWidth: Story = {
   args: {
     fullWidth: true,
   },
 };
 
-export const ModalEndAdornment: Story = {
+export const InputEndAdornment: Story = {
   args: {
-    readOnly: false,
     endAdornment: <Icon name={icon?.iconName} />,
   },
 };
 
-export const Header: Story = {
+export const InputStartAdornment: Story = {
   args: {
-    variant: "header",
-  },
-};
-
-export const HeaderWidthError: Story = {
-  args: {
-    variant: "header",
-    error: true,
-    errorText: "Ошибка",
-  },
-};
-
-export const HeaderEdditable: Story = {
-  args: {
-    variant: "header",
-    readOnly: false,
-  },
-};
-
-export const HeaderDisabled: Story = {
-  args: {
-    variant: "header",
-    disabled: true,
-  },
-};
-
-export const HeaderAutoFocus: Story = {
-  args: {
-    variant: "header",
-    autoFocus: true,
-    readOnly: false,
+    startAdornment: <input type="checkbox" />,
   },
 };

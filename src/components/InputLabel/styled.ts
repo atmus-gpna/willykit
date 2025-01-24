@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { InputLabelProps } from "./InputLabel.types";
 
 export const StyledLabel = styled.label.withConfig({
-  shouldForwardProp: (prop) => !["variant"].includes(prop),
-})<{ variant: InputLabelProps["variant"] }>`
+  shouldForwardProp: (prop) => !["component"].includes(prop),
+})<{ component: InputLabelProps["component"] }>`
   color: #00203399;
   display: flex;
   align-items: center;
@@ -14,12 +14,12 @@ export const StyledLabel = styled.label.withConfig({
   padding: 3px 6px;
 
   ${(props) =>
-    props.variant === "fieldset" &&
+    props.component === "fieldset" &&
     `
       width: 100%;
       border: 1px solid #e5e9eb;
       background: #f9f9f9;
-      padding: 7px 10px;
+      padding: 5px 10px;
       border-right: none;
     `}
 `;

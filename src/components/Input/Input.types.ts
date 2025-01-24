@@ -1,13 +1,13 @@
 import { Ref } from "react";
 
 export type InputProps = {
-  variant?: "standard" | "header" | "fieldset";
+  variant?: "standard" | "filled";
+  component?: "input" | "fieldset";
   placeholder?: string;
   error?: boolean;
   errorText?: string;
   readOnly?: boolean;
   disabled?: boolean;
-  required?: boolean;
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   autoFocus?: boolean;

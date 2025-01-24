@@ -4,6 +4,7 @@ import { Container } from "../styled";
 import Input from "../Input";
 import { TextFieldProps } from "./TextField.types";
 import classnames from "../../utils/classnames";
+import { FieldSet } from "./styled";
 
 const TextField = forwardRef<
   HTMLInputElement | HTMLTextAreaElement,
@@ -18,6 +19,7 @@ const TextField = forwardRef<
       width = 200,
       required,
       variant = "standard",
+      component = "input",
       ...props
     },
     ref,
@@ -27,26 +29,40 @@ const TextField = forwardRef<
         fullWidth={fullWidth}
         width={width}
         className={classnames("text-field-wrapper", className)}
-        variant={variant}
+        component={component}
         data-testid="container"
       >
         {label && (
           <InputLabel
-            variant={variant}
+            component={component}
             tooltip={slots?.tooltip}
             required={required}
-            error={variant === "fieldset" && props.error}
+            error={component === "fieldset" && props.error}
             errorText={props.errorText}
             label={label}
           />
         )}
-        <Input
-          ref={ref}
-          variant={variant}
-          fullWidth={fullWidth}
-          width={width}
-          {...props}
-        />
+        {component === "input" ? (
+          <Input
+            ref={ref}
+            fullWidth={fullWidth}
+            width={width}
+            variant={variant}
+            {...props}
+          />
+        ) : component === "fieldset" ? (
+          <FieldSet
+            ref={ref}
+            fullWidth={fullWidth}
+            width={width}
+            variant={variant}
+            component={component}
+            {...props}
+          />
+        ) : (
+          // следующие варианты
+          <></>
+        )}
       </Container>
     );
   },

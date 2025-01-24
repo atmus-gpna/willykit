@@ -6,7 +6,7 @@ interface ContainerProps {
   fullWidth?: boolean;
   width?: number;
   height?: number;
-  variant?: string;
+  component?: string;
 }
 
 export const Container = styled.div.withConfig({
@@ -17,7 +17,7 @@ export const Container = styled.div.withConfig({
   ${(props) => props.height && `height: ${props.height}px`};
 
   ${(props) =>
-    props.variant === "fieldset" &&
+    props.component === "fieldset" &&
     css`
       display: flex;
       justify-content: space-between;
