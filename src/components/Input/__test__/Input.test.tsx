@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
+import React from "react";
 import { Input } from "../Input";
 
 describe("Компонент Input", () => {

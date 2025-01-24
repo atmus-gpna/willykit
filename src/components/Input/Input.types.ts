@@ -1,7 +1,7 @@
 import { Ref } from "react";
 
 export type InputProps = {
-  variant: "standard" | "header" | "fieldset";
+  variant?: "standard" | "header" | "fieldset";
   placeholder?: string;
   error?: boolean;
   errorText?: string;

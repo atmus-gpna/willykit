@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
+import React from "react";
 import InputLabel from "../InputLabel";
 
 describe("Компонент InputLabel", () => {
@@ -16,7 +17,7 @@ describe("Компонент InputLabel", () => {
   });
 
   it("отображает иконку подсказки при наличии свойства tooltip", () => {
-    render(<InputLabel tooltip label="Текст метки" />);
+    render(<InputLabel tooltip={{ children: "Текст" }} label="Текст метки" />);
     expect(screen.getByRole("icon")).toBeInTheDocument();
   });
 

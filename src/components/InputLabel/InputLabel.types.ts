@@ -1,7 +1,7 @@
 import { TooltipProps } from "../Tooltip/Tooltip.types";
 
 export type InputLabelProps = {
-  variant: "standard" | "header" | "fieldset";
+  variant?: "standard" | "header" | "fieldset";
   label?: string;
   disabled?: boolean;
   required?: boolean;
