@@ -15,6 +15,7 @@ const TextFieldExample = () => {
   return (
     <TextField
       variant="standard"
+      component="fieldset"
       label="Username"
       readOnly={false}
       autoFocus
@@ -43,8 +44,9 @@ export default InputExample;
 
 #### Аргументы
 
+- **variant** - Варианты обычный или закрашенный "standard" | "filled";
+- **component** - Варианты дочернего компонента "input" | "fieldset"
 - **label*** - Заголовок; 
-- **used*** - Показывает область использования компонента: в модальном окне (modal) или в заголовке окна (header);
 - **placeholder** - Показывает заполняющий пустой Input текст;
 - **error** - Показывает наличие ошибки в данном поле (сопровождается соответствующей окраской обводки-border'а);
 - **errorText** - Показывает текст ошибки у данного поля;

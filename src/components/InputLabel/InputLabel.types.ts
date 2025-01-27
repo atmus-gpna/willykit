@@ -1,7 +1,7 @@
 import { TooltipProps } from "../Tooltip/Tooltip.types";
 
 export type InputLabelProps = {
-  component?: "input" | "fieldset";
+  isFieldSet?: boolean;
   label?: string;
   disabled?: boolean;
   required?: boolean;

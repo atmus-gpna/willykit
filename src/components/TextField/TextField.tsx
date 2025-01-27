@@ -34,7 +34,7 @@ const TextField = forwardRef<
       >
         {label && (
           <InputLabel
-            component={component}
+            isFieldSet={component === "fieldset"}
             tooltip={slots?.tooltip}
             required={required}
             error={component === "fieldset" && props.error}

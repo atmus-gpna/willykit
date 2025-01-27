@@ -20,6 +20,14 @@ const meta: Meta<typeof TextField> = {
         type: { summary: `"standard" | "fieldset"` },
       },
     },
+    component: {
+      control: { type: "select" },
+      options: ["input", "fieldset"],
+      description: "Выберите тип компонента",
+      table: {
+        type: { summary: `"input" | "fieldset"` },
+      },
+    },
     type: {
       control: { type: "select" },
       options: [

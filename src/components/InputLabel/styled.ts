@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { InputLabelProps } from "./InputLabel.types";
 
 export const StyledLabel = styled.label.withConfig({
-  shouldForwardProp: (prop) => !["component"].includes(prop),
-})<{ component: InputLabelProps["component"] }>`
+  shouldForwardProp: (prop) => !["isFieldSet"].includes(prop),
+})<{ isFieldSet: InputLabelProps["isFieldSet"] }>`
   color: #00203399;
   display: flex;
   align-items: center;
@@ -14,7 +14,7 @@ export const StyledLabel = styled.label.withConfig({
   padding: 3px 6px;
 
   ${(props) =>
-    props.component === "fieldset" &&
+    props.isFieldSet &&
     `
       width: 100%;
       border: 1px solid #e5e9eb;
