@@ -26,6 +26,7 @@ export const enum EIcons {
   "tableAdd" = "tableAdd",
   "tag" = "tag",
   "upload" = "upload",
+  "info" = "info",
 }
 
 export interface IIconProps {

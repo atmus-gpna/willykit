@@ -1,0 +1,62 @@
+import * as Input from "./Input.stories.tsx";
+import { EIcons } from "../../Icon/icon.types";
+import { Icon } from "../../Icon";
+import { Meta } from "@storybook/blocks";
+
+<Meta of={Input} title="Input" />
+
+# Input
+
+#### Пример
+
+```ts
+import {Input} from "willykit";
+
+const InputExample = () => {
+  const icon = {
+    right: EIcons.pluse,
+    left: EIcons.chart,
+  };
+
+  const [value, setValue] = React.useState<string>("");
+
+  return (
+    <Input
+      variant="standard"
+      placeholder="Enter text..."
+      endAdornment={<Icon name={icon?.right} color="red" />}
+      readOnly={false}
+      autoFocus
+      width={100}
+      error
+      required
+      value={value}
+      onChange={(event) => setValue(event.target.value)}
+    />
+  );
+};
+
+export default InputExample;
+```
+
+#### Аргументы
+
+- **variant** - Варианты обычный или закрашенный "standard" | "filled";
+- **component** - Тип родительского компонента "input" | "fieldset"
+- **placeholder** - Показывает заполняющий пустой Input текст;
+- **error** - Показывает наличие ошибки в данном поле (сопровождается соответствующей окраской обводки-border'а);
+- **errorText** - Показывает текст ошибки у данного поля;
+- **readOnly** - Показывает, что поле только для чтения;
+- **disabled** - Показывает, что пользователь никак не может взаимодействовать с данным полем (сопровождается соответствующей окраской поля);
+- **value** - Значение поля;
+- **onChange** - Вызов функции при изменении значения в компоненте Input;
+- **autoFocus** - Автоматическое помещение курсора при первом рендере;
+- **fullWidth** - Заполнение всей ширины страницы;
+- **width** - Ширина компонента;
+- **height** - Высота компонента;
+- **multiline** - Использование textarea;
+- **inputRef** - Передача ссылки на React-компонент Input;
+- **startAdornment** - Для расположения ноды в левой части компонента Input;
+- **endAdornment** - Для расположения иконок в правой части компонента Input;
+- **className** - Для создания пользовательского класса стилей;
+- **type** - Тип инпута ("password", "text" и тд.);

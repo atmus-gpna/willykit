@@ -1,0 +1,32 @@
+import * as InputLabel from "./InputLabel.stories.tsx";
+import { Meta } from "@storybook/blocks";
+
+<Meta of={InputLabel} title="InputLabel" />
+
+# InputLabel
+
+#### Пример
+
+```ts
+import {InputLabel} from "willykit";
+
+const Example = () => {
+  return (
+      <InputLabel 
+        tooltip="Текст"
+        required        
+        >
+            Текст метки
+        </InputLabel>
+  );
+};
+
+export default Example;
+```
+
+#### Аргументы
+
+- **component** - Тип родительского компонента "input" | "fieldset"
+- **label** - Передаваемый текст;
+- **tooltip** - Появляется Tooltip c всплывающей подсказкой;
+- **required** - Отображает символ *;
