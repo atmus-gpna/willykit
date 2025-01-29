@@ -1,39 +1,15 @@
-import React, { MouseEventHandler } from "react";
-import styled from "styled-components";
+import { FC } from "react";
+import { ButtonProps } from "./button.types";
+import { StyledButton } from "./styled";
+import { Icon } from "../Icon";
 
-export type ButtonProps = {
-  text?: string;
-  primary?: boolean;
-  disabled?: boolean;
-  size?: "small" | "medium" | "large";
-  onClick?: MouseEventHandler<HTMLButtonElement>;
-};
-
-const StyledButton = styled.button<ButtonProps>`
-  border: 0;
-  line-height: 1;
-  font-size: 15px;
-  cursor: pointer;
-  font-weight: 700;
-  font-weight: bold;
-  border-radius: 10px;
-  display: inline-block;
-  color: ${(props) => (props.primary ? "#fff" : "#000")};
-  background-color: ${(props) => (props.primary ? "#55b0ff" : "#c4e9f4")};
-  padding: ${(props) =>
-    props.size === "small"
-      ? "7px 25px 8px"
-      : props.size === "medium"
-        ? "9px 30px 11px"
-        : "14px 30px 16px"};
-`;
-
-const Button: React.FC<ButtonProps> = ({
+const Button: FC<ButtonProps> = ({
   size,
   primary,
   disabled,
   text,
   onClick,
+  icon = undefined,
   ...props
 }) => {
   return (
@@ -45,7 +21,23 @@ const Button: React.FC<ButtonProps> = ({
       size={size}
       {...props}
     >
-      {text}
+      {icon ? (
+        <div style={{ display: "flex", gap: "20px" }}>
+          {icon?.position === "left" ? (
+            <>
+              <Icon name={icon?.iconName} color={icon?.color} />
+              <p style={{ margin: 0, padding: 0 }}>{text}</p>
+            </>
+          ) : (
+            <>
+              <p style={{ margin: 0, padding: 0 }}>{text}</p>
+              <Icon name={icon?.iconName} color={icon?.color} />
+            </>
+          )}
+        </div>
+      ) : (
+        <p style={{ margin: 0, padding: 0 }}>{text}</p>
+      )}
     </StyledButton>
   );
 };
