@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import Button from "../Button";
 import { ButtonProps } from "../button.types";
 

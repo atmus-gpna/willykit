@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import ExampleButton from "./ExampleButton";
 import { EIcons } from "../../Icon/icon.types";
 import { Icon } from "../../Icon";
-import React from "react";
 const meta: Meta<typeof ExampleButton> = {
   title: "Button",
   component: ExampleButton,
@@ -18,9 +17,7 @@ export const Primary: Story = {
     disabled: false,
     size: "small",
     onClick: () => console.log("Button clicked"),
-    iconLeft: (
-      <Icon name={EIcons.pluse} color="red" size="14" />
-    ) as unknown as typeof Icon,
+    iconLeft: <Icon name={EIcons.pluse} color="red" width="14" />,
   },
 };
 export const Secondary: Story = {
@@ -30,9 +27,7 @@ export const Secondary: Story = {
     disabled: false,
     size: "small",
     onClick: () => console.log("Button clicked"),
-    iconRight: (
-      <Icon name={EIcons.pluse} color="green" size="14" />
-    ) as unknown as typeof Icon,
+    iconRight: <Icon name={EIcons.pluse} color="green" width="14" />,
   },
 };
 

@@ -12,6 +12,6 @@ export const SingleIcon: Story = {
   args: {
     name: "pluse",
     color: "red",
-    size: "14",
+    width: "14",
   },
 };

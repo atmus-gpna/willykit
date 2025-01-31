@@ -1,22 +1,22 @@
 import { useDynamicSvgImport } from "../../hooks/useDynamicSvgImport";
 import { IIconProps } from "./icon.types";
-import { IconWrapper } from "./styled";
 
 const Icon: React.FC<IIconProps> = (props) => {
-  const { name, color, size } = props;
+  const { name, color, width } = props;
   const { SvgIcon: RawSvgIcon } = useDynamicSvgImport(name);
 
   return (
-    <IconWrapper role="icon">
+    <>
       {RawSvgIcon && (
         <RawSvgIcon
+          data-testid="icon"
           style={{
             color: color,
-            width: size,
+            width: width,
           }}
         />
       )}
-    </IconWrapper>
+    </>
   );
 };
 

@@ -1,5 +1,4 @@
-import { MouseEventHandler } from "react";
-import { Icon } from "../Icon";
+import { MouseEventHandler, ReactNode } from "react";
 
 export type ButtonProps = {
   text?: string;
@@ -7,6 +6,6 @@ export type ButtonProps = {
   disabled?: boolean;
   size?: "small" | "medium" | "large";
   onClick?: MouseEventHandler<HTMLButtonElement>;
-  iconRight?: typeof Icon;
-  iconLeft?: typeof Icon;
+  iconRight?: ReactNode;
+  iconLeft?: ReactNode;
 };

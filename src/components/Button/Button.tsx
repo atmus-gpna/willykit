@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { ButtonProps } from "./button.types";
-import { StyledButton } from "./styled";
+import { ButtonWrapper, IconWrapper, StyledButton } from "./styled";
 
 const Button: FC<ButtonProps> = ({
   size,
@@ -21,19 +21,9 @@ const Button: FC<ButtonProps> = ({
       size={size}
       {...props}
     >
-      {iconLeft ? (
-        <div style={{ display: "flex", gap: "20px" }}>
-          <>{iconLeft}</>
-          <p style={{ margin: 0, padding: 0 }}>{text}</p>
-        </div>
-      ) : iconRight ? (
-        <div style={{ display: "flex", gap: "20px" }}>
-          <p style={{ margin: 0, padding: 0 }}>{text}</p>
-          <>{iconRight}</>
-        </div>
-      ) : (
-        <p style={{ margin: 0, padding: 0 }}>{text}</p>
-      )}
+      {iconLeft && <IconWrapper position={"left"}>{iconLeft}</IconWrapper>}
+      <ButtonWrapper>{text}</ButtonWrapper>
+      {iconRight && <IconWrapper position={"right"}>{iconRight}</IconWrapper>}
     </StyledButton>
   );
 };
