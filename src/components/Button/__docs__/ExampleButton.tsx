@@ -1,19 +1,15 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import Button from "../Button";
 import { ButtonProps } from "../button.types";
-import { EIcons } from "../../Icon/icon.types";
 
-const Example: FC<ButtonProps> = ({
-  disabled = false,
-  onClick = () => {},
-  primary = true,
-  size = "small",
-  text = "Button",
-  icon = {
-    iconName: EIcons.pluse,
-    position: "left",
-    color: "red",
-  },
+const ExampleButton: FC<ButtonProps> = ({
+  disabled,
+  onClick,
+  primary,
+  size,
+  text,
+  iconLeft,
+  iconRight,
 }) => {
   return (
     <div
@@ -30,10 +26,11 @@ const Example: FC<ButtonProps> = ({
         disabled={disabled}
         onClick={onClick}
         primary={primary}
-        icon={icon}
+        iconLeft={iconLeft}
+        iconRight={iconRight}
       />
     </div>
   );
 };
 
-export default Example;
+export default ExampleButton;
